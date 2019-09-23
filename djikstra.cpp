@@ -62,11 +62,6 @@ tuple <vector<int>, int, double> Djikstra::dijkstra(int orig, int dest)
             // marca como visitado
             visitados[u] = true;
 
-            if (visitados[dest])
-            {
-                visitou++;
-            }
-
             list<tuple<int, int, int> >::iterator it;
 
             // percorre os vértices "v" adjacentes de "u"
@@ -79,11 +74,7 @@ tuple <vector<int>, int, double> Djikstra::dijkstra(int orig, int dest)
                 // relaxamento (u, v)
                 if(dist[v] > (dist[u] + custo_aresta))
                 {
-                    if (!visitados[dest])
-                    {
-                        direcoes.push_back(direcao);
-                    }
-
+                    direcoes.push_back(direcao);
 
                     dist[v] = dist[u] + custo_aresta;
                     pq.push(make_tuple(dist[v], v, v));
